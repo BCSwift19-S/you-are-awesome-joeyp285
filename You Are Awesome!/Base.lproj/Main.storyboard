@@ -18,16 +18,24 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ng9-PW-b7k">
-                                <rect key="frame" x="36" y="76" width="343" height="110"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ng9-PW-b7k">
+                                <rect key="frame" x="16" y="44" width="382" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="jeI-ZR-Rbt"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
                                 <color key="textColor" red="0.52941176469999995" green="0.066666666669999999" blue="0.070588235289999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Jj-BH-zmV">
-                                <rect key="frame" x="165" y="194" width="104" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="z2Y-X1-OjZ">
+                                <rect key="frame" x="16" y="190" width="382" height="634"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Jj-BH-zmV">
+                                <rect key="frame" x="119.5" y="152" width="175" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="PEc-z6-1SM"/>
+                                    <constraint firstAttribute="width" constant="175" id="SAZ-wD-biQ"/>
+                                </constraints>
                                 <state key="normal" title="Show Message"/>
                                 <connections>
                                     <action selector="showMessagePressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="R3T-Vc-mIy"/>
@@ -35,15 +43,30 @@
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="z2Y-X1-OjZ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="8te-OL-Ijj"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="z2Y-X1-OjZ" secondAttribute="bottom" constant="38" id="EAt-rN-JZt"/>
+                            <constraint firstItem="1Jj-BH-zmV" firstAttribute="top" secondItem="ng9-PW-b7k" secondAttribute="bottom" constant="8" id="Je4-t9-M6a"/>
+                            <constraint firstItem="ng9-PW-b7k" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="Kn5-t3-5i6"/>
+                            <constraint firstItem="ng9-PW-b7k" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="N4j-U6-yCK"/>
+                            <constraint firstItem="1Jj-BH-zmV" firstAttribute="top" secondItem="ng9-PW-b7k" secondAttribute="bottom" constant="8" id="QdL-mc-kxi"/>
+                            <constraint firstItem="1Jj-BH-zmV" firstAttribute="top" secondItem="ng9-PW-b7k" secondAttribute="bottom" constant="8" id="XWh-Sb-uRM"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="z2Y-X1-OjZ" secondAttribute="trailing" constant="16" id="cLj-az-hFM"/>
+                            <constraint firstItem="1Jj-BH-zmV" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="gRs-iZ-CrT"/>
+                            <constraint firstItem="1Jj-BH-zmV" firstAttribute="top" secondItem="ng9-PW-b7k" secondAttribute="bottom" constant="8" id="jdE-pu-jiX"/>
+                            <constraint firstItem="z2Y-X1-OjZ" firstAttribute="top" secondItem="1Jj-BH-zmV" secondAttribute="bottom" constant="8" id="udL-Xx-p1q"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="ng9-PW-b7k" secondAttribute="trailing" constant="16" id="zrs-8y-oyY"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="awesomeImageView" destination="z2Y-X1-OjZ" id="QF1-yn-u4K"/>
                         <outlet property="messageLabel" destination="ng9-PW-b7k" id="udk-mx-upE"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="136.80000000000001" y="97.601199400299862"/>
+            <point key="canvasLocation" x="136.23188405797103" y="97.098214285714278"/>
         </scene>
     </scenes>
 </document>
