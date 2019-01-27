@@ -28,6 +28,22 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
     }
 
+    func playSound() {
+        var soundName = "sound\(soundIndex)"
+        
+        if let sound = NSDataAsset(name: soundName) {
+            do {
+                try awesomePlayer = AVAudioPlayer(data: sound.data)
+                awesomePlayer.play()
+            } catch {
+                print("ERROR: data in \(soundName) couldn't be played as a sound.")
+            }
+            
+        } else {
+            print("ERROR: file \(soundName) didn't load")
+        }
+    }
+    
     @IBAction func showMessagePressed(_ sender: UIButton) {
 
         
@@ -56,19 +72,8 @@ class ViewController: UIViewController {
         
         soundIndex = newIndex
         
-        var soundName = "sound\(soundIndex)"
         
-        if let sound = NSDataAsset(name: soundName) {
-            do {
-                try awesomePlayer = AVAudioPlayer(data: sound.data)
-                awesomePlayer.play()
-            } catch {
-                
-            }
-            
-        } else {
-            
-        }
+        playSound()
 
     }
     
