@@ -15,6 +15,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var awesomeImageView: UIImageView!
     
     @IBOutlet weak var messageLabel: UILabel!
+    @IBOutlet weak var soundSwitch: UISwitch!
     
     var awesomePlayer = AVAudioPlayer()
     var index = -1
@@ -36,19 +37,24 @@ class ViewController: UIViewController {
         return newIndex
     }
     
-    func playSound(soundName: String) {
+    func playSound(soundName: String, audioPlayer: inout AVAudioPlayer) {
         var soundName = "sound\(soundIndex)"
         
         if let sound = NSDataAsset(name: soundName) {
             do {
-                try awesomePlayer = AVAudioPlayer(data: sound.data)
-                awesomePlayer.play()
+                try audioPlayer = AVAudioPlayer(data: sound.data)
+                audioPlayer.play()
             } catch {
                 print("ERROR: data in \(soundName) couldn't be played as a sound.")
             }
             
         } else {
             print("ERROR: file \(soundName) didn't load")
+        }
+    }
+    @IBAction func soundSwitchPressed(_ sender: UISwitch) {
+        if soundSwitch.isOn == false && soundIndex != -1 {
+                awesomePlayer.stop()
         }
     }
     
@@ -64,10 +70,12 @@ class ViewController: UIViewController {
         imageIndex = nonRepeatingRandom(lastNumber: imageIndex, maxValue: numberOfImages)
         awesomeImageView.image = UIImage(named: "image\(imageIndex)")
         
-        soundIndex = nonRepeatingRandom(lastNumber: soundIndex, maxValue: numberOfSounds)
+        if soundSwitch.isOn {
+            soundIndex = nonRepeatingRandom(lastNumber: soundIndex, maxValue: numberOfSounds)
+            let soundName = "sound\(soundIndex)"
+            playSound(soundName: soundName, audioPlayer: &awesomePlayer)
+        }
         
-        let soundName = "sound\(soundIndex)"
-        playSound(soundName: soundName)
 
     }
     
